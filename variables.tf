@@ -27,4 +27,3 @@ variable "ssh_allowed_cidr" {
   description = "The CIDR block allowed to reach the instances via SSH (e.g. \"203.0.113.10/32\" for a single IP)"
   type        = string
 }
-

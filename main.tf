@@ -13,12 +13,9 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = var.region
   default_tags {
-    tags = {
-      Project     = var.project_name
-      Environment = terraform.workspace
-    }
+    tags = local.tags
   }
 }
 
@@ -34,4 +31,8 @@ module "ec2" {
   project_name     = var.project_name
   vpc_id           = module.vpc.vpc_id
   ssh_allowed_cidr = var.ssh_allowed_cidr
+  subnet_ids       = module.vpc.private_subnet_ids
+  asg = {
+    tags = local.tags
+  }
 }
