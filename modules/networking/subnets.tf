@@ -1,4 +1,5 @@
 resource "aws_subnet" "public" {
+  #checkov:skip=CKV_AWS_130:Assign public ip to the instances in public subnets
   count                   = length(var.subnet_azs)
   vpc_id                  = aws_vpc.this.id
   cidr_block              = cidrsubnet(var.vpc_cidr_block, 3, count.index)
