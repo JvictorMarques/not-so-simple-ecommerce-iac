@@ -7,7 +7,7 @@ resource "aws_subnet" "public" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "${local.name_prefix}-public-${count.index + 1}${substr(var.subnet_azs[count.index], -1, 1)}"
+    Name = "${local.name_prefix}-public-subnet-${count.index + 1}${substr(var.subnet_azs[count.index], -1, 1)}"
     Kind = "public"
   }
 }
@@ -20,7 +20,7 @@ resource "aws_subnet" "private" {
   map_public_ip_on_launch = false
 
   tags = {
-    Name = "${local.name_prefix}-private-${count.index + 1}${substr(var.subnet_azs[count.index], -1, 1)}"
+    Name = "${local.name_prefix}-private-subnet-${count.index + 1}${substr(var.subnet_azs[count.index], -1, 1)}"
     Kind = "private"
   }
 }

@@ -36,14 +36,12 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The name of the project | `string` | n/a | yes |
-| <a name="input_subnet_azs"></a> [subnet\_azs](#input\_subnet\_azs) | The availability zones where the subnets will be created | `list(string)` | n/a | yes |
-| <a name="input_vpc_cidr_block"></a> [vpc\_cidr\_block](#input\_vpc\_cidr\_block) | The CIDR block for the VPC | `string` | n/a | yes |
+| <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The name of the project | `string` | `"nsse"` | no |
+| <a name="input_region"></a> [region](#input\_region) | The region where the resources will be created | `string` | `"us-east-1"` | no |
+| <a name="input_subnet_azs"></a> [subnet\_azs](#input\_subnet\_azs) | The availability zones where the subnets will be created | `list(string)` | <pre>[<br/>  "us-east-1a",<br/>  "us-east-1b"<br/>]</pre> | no |
+| <a name="input_vpc_cidr_block"></a> [vpc\_cidr\_block](#input\_vpc\_cidr\_block) | The CIDR block for the VPC | `string` | `"10.0.0.0/24"` | no |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_private_subnet_ids"></a> [private\_subnet\_ids](#output\_private\_subnet\_ids) | n/a |
-| <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | n/a |
+No outputs.
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

@@ -3,7 +3,7 @@ resource "aws_nat_gateway" "this" {
   availability_mode = "regional"
 
   tags = {
-    Name = local.name_prefix
+    Name = "${local.name_prefix}-nat-gateway"
   }
 
   depends_on = [aws_internet_gateway.this]
