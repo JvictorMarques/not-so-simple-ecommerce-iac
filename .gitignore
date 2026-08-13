@@ -41,4 +41,7 @@ terraform.rc
 plan
 tfplan
 
+# Key files
+*.pem
+
 # End of https://www.toptal.com/developers/gitignore/api/terraform
