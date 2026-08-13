@@ -1,5 +1,5 @@
-resource "aws_autoscaling_group" "control_plane" {
-  name = local.name_prefix
+resource "aws_autoscaling_group" "this" {
+  name = local.asg_name
 
   max_size         = var.asg.max_size
   min_size         = var.asg.min_size
@@ -11,11 +11,11 @@ resource "aws_autoscaling_group" "control_plane" {
   force_delete = true
 
   launch_template {
-    id      = aws_launch_template.control_plane.id
+    id      = aws_launch_template.this.id
     version = "$Latest"
   }
 
-  vpc_zone_identifier = var.subnet_ids
+  vpc_zone_identifier = var.asg.vpc_zone_identifier
 
   instance_maintenance_policy {
     min_healthy_percentage = 100

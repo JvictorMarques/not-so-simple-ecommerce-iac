@@ -1,16 +1,17 @@
-resource "aws_launch_template" "control_plane" {
-  name = local.name_prefix
+resource "aws_launch_template" "this" {
+  name = local.launch_template_name
 
-  key_name                             = aws_key_pair.this.key_name
-  image_id                             = data.aws_ami.debian.id
+  key_name                             = var.launch_template.key_name
+  image_id                             = var.launch_template.image_id
   disable_api_stop                     = true
   disable_api_termination              = true
   instance_type                        = var.launch_template.instance_type
   instance_initiated_shutdown_behavior = "terminate"
-  vpc_security_group_ids               = [aws_security_group.allow_ssh.id]
+  user_data                            = var.launch_template.user_data
 
   network_interfaces {
     associate_public_ip_address = false
+    security_groups             = var.launch_template.vpc_security_group_ids
   }
 
   block_device_mappings {
@@ -23,7 +24,7 @@ resource "aws_launch_template" "control_plane" {
   }
 
   iam_instance_profile {
-    name = aws_iam_instance_profile.this.name
+    name = var.launch_template.iam_instance_profile.name
   }
 
   metadata_options {
@@ -34,7 +35,7 @@ resource "aws_launch_template" "control_plane" {
     resource_type = "instance"
 
     tags = {
-      Name = local.name_prefix
+      Name = local.launch_template_name
     }
   }
 }
