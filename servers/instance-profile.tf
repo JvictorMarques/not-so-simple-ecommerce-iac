@@ -16,9 +16,10 @@ resource "aws_iam_role" "this" {
   assume_role_policy = data.aws_iam_policy_document.this.json
 }
 
-resource "aws_iam_role_policy_attachment" "test-attach" {
+resource "aws_iam_role_policy_attachment" "this" {
+  count      = length(var.policy_arns)
   role       = aws_iam_role.this.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+  policy_arn = var.policy_arns[count.index]
 }
 resource "aws_iam_instance_profile" "this" {
   name = "${var.project_name}-instance-profile"
