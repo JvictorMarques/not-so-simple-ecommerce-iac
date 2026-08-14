@@ -2,12 +2,12 @@ module "control_plane" {
   source      = "./modules/instances"
   name_prefix = local.name_prefix
   name        = var.control_plane.name
+  vpc_id      = data.aws_vpc.this.id
   launch_template = {
-    key_name               = aws_key_pair.this.key_name
-    image_id               = data.aws_ami.debian.id
-    instance_type          = var.control_plane.launch_template.instance_type
-    vpc_security_group_ids = [aws_security_group.allow_ssh.id]
-    user_data              = filebase64("${path.module}/scripts/ssm.sh")
+    key_name      = aws_key_pair.this.key_name
+    image_id      = data.aws_ami.debian.id
+    instance_type = var.control_plane.launch_template.instance_type
+    user_data     = filebase64("${path.module}/scripts/ssm.sh")
     ebs = {
       volume_size           = var.control_plane.launch_template.ebs.volume_size
       delete_on_termination = var.control_plane.launch_template.ebs.delete_on_termination

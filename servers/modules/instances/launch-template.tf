@@ -11,11 +11,11 @@ resource "aws_launch_template" "this" {
 
   network_interfaces {
     associate_public_ip_address = false
-    security_groups             = var.launch_template.vpc_security_group_ids
+    security_groups             = [aws_security_group.this.id]
   }
 
   block_device_mappings {
-    device_name = "/dev/sdf"
+    device_name = "/dev/xvda"
 
     ebs {
       volume_size           = var.launch_template.ebs.volume_size
