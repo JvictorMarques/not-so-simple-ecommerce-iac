@@ -8,14 +8,18 @@ variable "name" {
   type        = string
 }
 
+variable "vpc_id" {
+  description = "The ID of the VPC where the resources will be created."
+  type        = string
+}
+
 variable "launch_template" {
   description = "Launch template configuration settings."
   type = object({
-    key_name               = string
-    image_id               = string
-    instance_type          = string
-    vpc_security_group_ids = list(string)
-    user_data              = string
+    key_name      = string
+    image_id      = string
+    instance_type = string
+    user_data     = string
     ebs = object({
       volume_size           = number
       delete_on_termination = bool
