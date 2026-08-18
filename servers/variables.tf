@@ -65,3 +65,45 @@ variable "worker_nodes" {
     })
   })
 }
+
+variable "patch_baseline" {
+  description = "Patch baseline configuration settings."
+  type = list(object({
+    approval_rule = object({
+      approve_after_days = number
+      compliance_level   = string
+      patch_filter = list(object({
+        key    = string
+        values = list(string)
+      }))
+    })
+  }))
+}
+
+variable "document" {
+  description = "The name of the patch group."
+  type = object({
+    schedule_expression = string
+    max_concurrency     = string
+    max_errors          = string
+    parameters = object({
+      Operation    = string
+      RebootOption = string
+    })
+  })
+  default = {
+    schedule_expression = "cron(*/30 * * * ? *)"
+    max_concurrency     = "1"
+    max_errors          = "0"
+    parameters = {
+      Operation    = "Install"
+      RebootOption = "RebootIfNeeded"
+    }
+  }
+}
+
+variable "logs_bucket_name" {
+  description = "The name of the S3 bucket for logs."
+  type        = string
+  default     = "documents-logs-bucket"
+}

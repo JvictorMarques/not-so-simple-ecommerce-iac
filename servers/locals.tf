@@ -4,4 +4,5 @@ locals {
     Project     = var.project_name
     Environment = terraform.workspace
   }
+  patch_group = "${local.name_prefix}-patch-group"
 }
