@@ -25,9 +25,10 @@ module "control_plane" {
     health_check_type         = var.control_plane.asg.health_check_type
     vpc_zone_identifier       = data.aws_subnets.private.ids
     tags = {
-      Name        = "${local.name_prefix}-control-plane"
-      Project     = var.project_name
-      Environment = terraform.workspace
+      Name          = "${local.name_prefix}-control-plane"
+      Project       = var.project_name
+      Environment   = terraform.workspace
+      "Patch Group" = local.patch_group
     }
   }
 }

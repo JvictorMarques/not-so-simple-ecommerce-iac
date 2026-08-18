@@ -25,9 +25,10 @@ module "worker_nodes" {
     health_check_type         = var.worker_nodes.asg.health_check_type
     vpc_zone_identifier       = data.aws_subnets.private.ids
     tags = {
-      Name        = "${local.name_prefix}-${var.worker_nodes.name}"
-      Project     = var.project_name
-      Environment = terraform.workspace
+      Name          = "${local.name_prefix}-${var.worker_nodes.name}"
+      Project       = var.project_name
+      Environment   = terraform.workspace
+      "Patch Group" = local.patch_group
     }
   }
 }
