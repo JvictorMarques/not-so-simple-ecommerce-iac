@@ -5,7 +5,7 @@ module "worker_nodes" {
   vpc_id      = data.aws_vpc.this.id
   launch_template = {
     key_name      = aws_key_pair.this.key_name
-    image_id      = data.aws_ami.debian.id
+    image_id      = data.aws_ami.this.id
     instance_type = var.worker_nodes.launch_template.instance_type
     user_data     = filebase64("${path.module}/scripts/ssm.sh")
     ebs = {

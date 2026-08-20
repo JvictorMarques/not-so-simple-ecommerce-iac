@@ -1,4 +1,4 @@
-data "aws_ami" "debian" {
+data "aws_ami" "this" {
   most_recent = true
   owners      = ["136693071363"]
 
