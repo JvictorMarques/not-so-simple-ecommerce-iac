@@ -9,7 +9,7 @@ resource "aws_ssm_association" "this" {
   }
 
   output_location {
-    s3_bucket_name = aws_s3_bucket.logs.bucket
+    s3_bucket_name = aws_s3_bucket.this.bucket
     s3_key_prefix  = "patching-logs"
   }
 
