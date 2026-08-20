@@ -3,9 +3,9 @@ data "aws_iam_policy_document" "sns_policy" {
     effect = "Allow"
     principals {
       type        = "AWS"
-      identifiers = ["${var.account_id}"]
+      identifiers = [var.account_id]
     }
-    resources = [aws_sns_topic.order_confirmed.arn]
+    resources = [aws_sns_topic.this.arn]
     actions = [
       "sns:Publish",
       "sns:RemovePermission",
