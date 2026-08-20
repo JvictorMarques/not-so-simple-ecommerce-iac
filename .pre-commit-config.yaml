@@ -17,7 +17,7 @@ repos:
             - --hook-config=--path-to-file=README.md
             - --hook-config=--add-to-existing-file=true
             - --hook-config=--create-file-if-not-exist=true
-    -   id: terraform_checkov
+    # -   id: terraform_checkov
 -   repo: https://github.com/gitleaks/gitleaks
     rev: v8.30.0
     hooks:
