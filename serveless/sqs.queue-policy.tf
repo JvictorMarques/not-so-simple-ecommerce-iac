@@ -8,7 +8,7 @@ data "aws_iam_policy_document" "sqs_policy" {
     ]
     principals {
       type        = "AWS"
-      identifiers = ["${var.account_id}"]
+      identifiers = [var.account_id]
     }
     principals {
       type        = "Service"
