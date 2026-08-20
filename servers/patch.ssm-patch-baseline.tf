@@ -1,8 +1,3 @@
-resource "aws_ssm_patch_group" "this" {
-  baseline_id = aws_ssm_patch_baseline.this.id
-  patch_group = local.patch_group
-}
-
 resource "aws_ssm_patch_baseline" "this" {
   name                                 = "${local.name_prefix}-Debian-13-Patch-Baseline"
   description                          = "Patch baseline for Debian-13"
