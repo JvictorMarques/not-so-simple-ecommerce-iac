@@ -44,4 +44,7 @@ tfplan
 # Key files
 *.pem
 
+# Node Modules
+node_modules/
+*.zip
 # End of https://www.toptal.com/developers/gitignore/api/terraform
