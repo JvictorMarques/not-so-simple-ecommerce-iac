@@ -159,3 +159,17 @@ variable "rds_proxy" {
     role_name     = "nsse-rds-proxy-role"
   }
 }
+
+variable "lambda" {
+  description = "The configuration for the Lambda function"
+  type = object({
+    name      = string
+    runtime   = string
+    role_name = string
+  })
+  default = {
+    name      = "orderConfirmed"
+    runtime   = "nodejs24.x"
+    role_name = "orderConfirmedLambdaRole"
+  }
+}

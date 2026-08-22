@@ -11,6 +11,7 @@ resource "aws_rds_cluster" "this" {
   db_subnet_group_name        = aws_db_subnet_group.this.name
   deletion_protection         = var.rds_cluster.deletion_protection
   vpc_security_group_ids      = [aws_security_group.this.id]
+  skip_final_snapshot         = true
 
   serverlessv2_scaling_configuration {
     min_capacity = var.rds_cluster.serverlessv2_scaling_configuration.min_capacity
